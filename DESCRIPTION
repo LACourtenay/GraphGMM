@@ -1,0 +1,37 @@
+Package: GraphGMM
+Type: Package
+Title: A library for Graph based Geometric Morphometrics
+Version: 1.0.0
+Authors@R: person("Lloyd", "Courtenay", email = "ladc1995@gmail.com", role = c("aut", "cre"))
+Description: An extension to geometric morphometric libraries oriented towards the
+    integration of Graph Theory into the analysis of landmark data. Graph-based
+    Geometric Morphometrics is additionally accompanied by other non-linear dimensionality
+    reduction algorithms.
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    igraph (>= 1.2.0),
+    abind (>= 1.4),
+    lsa (>= 0.73.0),
+    RTriangle (>= 1.6),
+    ggplot2 (>= 3.3.0),
+    gridExtra (>= 2.3),
+    philentropy (>= 0.4),
+    Rtsne (>= 0.15),
+    ramify (>= 0.3.0),
+    rgl (>= 0.105.0),
+    dplyr (>= 1.0),
+    geomorph (>= 3.3.0),
+    sm (>= 2.2),
+    shapes (>= 1.2.0),
+    robustbase (>= 0.9),
+    MASS (>= 7.3),
+    Rvcg (>= 0.20),
+    RColorBrewer (>= 1.0),
+    car (>= 3.0),
+    magrittr (>= 2.0),
+    Morpho (>= 2.0)
+RoxygenNote: 7.1.2
+Depends:
+    R(>= 2.10)
