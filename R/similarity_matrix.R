@@ -79,8 +79,8 @@ similarity_matrix <- function(landmark_configuration, method = "cosine", unravel
       for (lmj in 1:dim(landmark_configuration)[1]) {
 
         if (method == "cosine") {
-          dist_matrix[lmi, lmj] <- lsa::cosine(landmark_configuration[lmi,,i],
-                                               landmark_configuration[lmj,,i])[[1]]
+          dist_matrix[lmi, lmj] <- cosine_distance(landmark_configuration[lmi,,i],
+                                                   landmark_configuration[lmj,,i])
         } else if (method == "euclid") {
           dist_matrix[lmi, lmj] <- philentropy::minkowski(landmark_configuration[lmi,,i],
                                                           landmark_configuration[lmj,,i],

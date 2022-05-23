@@ -24,6 +24,20 @@ print_cum_var <- function(percents) {
   }
 }
 
+flatten_matrix <- function(lm_matrix) {
+
+  lm_vector <- t(lm_matrix)
+  dim(lm_vector) <- NULL
+  return(lm_vector)
+
+}
+
+cosine_distance <- function(x, y) {
+
+  return(crossprod(x, y) / sqrt(crossprod(x) * crossprod(y)))
+
+}
+
 single_value_decomposition <- function(X, centre = TRUE, scale = FALSE) {
 
   X <- as.matrix(X)

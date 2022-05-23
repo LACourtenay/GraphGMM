@@ -143,7 +143,7 @@ kernel_pca_biplot <- function(data,
   )
 
   if (legend_position %!in% possible_legend_positions) {
-    stop("Please select a method between cosine, euclid or chebyshev")
+    stop("Please select a valid legend position")
   }
 
   # still have to debug arrow variables

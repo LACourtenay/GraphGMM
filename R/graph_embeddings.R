@@ -188,8 +188,8 @@ graph_embeddings <- function(landmarks, edge_matrix, num_convolutions = 2,
       for (lmj in 1:nrow(feature_embedding)) {
 
         if (dist_method == "cosine") {
-          dist_matrix[lmi, lmj] <- lsa::cosine(feature_embedding[lmi,],
-                                               feature_embedding[lmj,])[[1]]
+          dist_matrix[lmi, lmj] <- cosine_distance(feature_embedding[lmi,],
+                                                   feature_embedding[lmj,])[[1]]
         }
 
         if (dist_method == "euclid") {

@@ -60,7 +60,7 @@ vector_from_landmarks <- function(landmark_array) {
 
   flat_proc <- c()
   for (i in 1:dim(landmark_array)[3]) {
-    flat <- ramify::flatten(landmark_array[,,i])
+    flat <- flatten_matrix(landmark_array[,,i])
     flat_proc <- rbind(flat_proc, flat)
   }
   flat_proc <- as.data.frame(flat_proc)

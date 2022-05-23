@@ -13,12 +13,10 @@ LazyData: true
 Imports:
     igraph (>= 1.2.0),
     abind (>= 1.4),
-    lsa (>= 0.73.0),
     RTriangle (>= 1.6),
     ggplot2 (>= 3.3.0),
     philentropy (>= 0.4),
     Rtsne (>= 0.15),
-    ramify (>= 0.3.0),
     rgl (>= 0.105.0),
     dplyr (>= 1.0),
     geomorph (>= 3.3.0),

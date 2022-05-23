@@ -53,7 +53,7 @@ separate_samples <- function(GPAmatrix, labels, target_sample) {
   index <- labels == target_sample
 
   flat_matrix<-c(); for (i in 1:length(labels)) {
-    flat<-ramify::flatten(GPAmatrix[,,i])
+    flat <- flatten_matrix(GPAmatrix[,,i])
     flat_matrix<-rbind(flat_matrix, flat)
   }; flat_matrix<-as.data.frame(flat_matrix)
 
