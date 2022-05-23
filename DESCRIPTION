@@ -16,7 +16,6 @@ Imports:
     lsa (>= 0.73.0),
     RTriangle (>= 1.6),
     ggplot2 (>= 3.3.0),
-    gridExtra (>= 2.3),
     philentropy (>= 0.4),
     Rtsne (>= 0.15),
     ramify (>= 0.3.0),
