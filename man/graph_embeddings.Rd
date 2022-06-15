@@ -49,9 +49,9 @@ For embedding, the present algorithm uses graph theory and the concept of a grap
 typically used in graph based representation learning. Each landmark configuration
 is thus represented as an undirected graph \eqn{G}, where every landmark is a node
 \eqn{LM_{v} \in V}, and is connected to neighbour \eqn{LM_{u}} via an edge. \eqn{G}
-can thus be represented as an adjacency matrix \eqn{A \in \mathbb{R}^{n \times n}},
-with a feature matrix \eqn{X \in \mathbb{R}^{n \times d}} of procrustes landmark
-coordinates, where \eqn{n} is the number of landmarks, and \eqn{d} is the number of dimensions.
+can thus be represented as an adjacency matrix \eqn{A \in \mathbb{R}^{p \times p}},
+with a feature matrix \eqn{X \in \mathbb{R}^{p \times k}} of procrustes landmark
+coordinates, where \eqn{p} is the number of landmarks, and \eqn{k} is the number of dimensions.
 
 The embedding process thus consists in a message passing and neighbourhood aggregation
 scheme, whereby each landmark is transformed to be a function of itself and its neighbours.
