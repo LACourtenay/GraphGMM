@@ -30,12 +30,13 @@
 #' This function plots a Non-Linear Princpial Component Analysis using a
 #' prior transformation to the data according to a kernel provided by the user.
 #'
+#' @return \code{eigenvalues} - Eigenvalues for each PC score
 #' @return \code{variance} - Explained variance of each PC Score
 #' @return \code{pc_scores} - The PC scores
 #' @return \code{pca_plot} - a ggplot object containing the pca plot
 #'
 #' @author Lloyd A. Courtenay
-#' 
+#'
 #' @seealso
 #' \code{\link{kernel_cauchy}}, \code{\link{kernel_gaussian}},
 #' \code{\link{kernel_laplace}}, \code{\link{kernel_poly}},

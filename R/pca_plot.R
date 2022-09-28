@@ -19,6 +19,7 @@
 #' @param Ch_size A numeric value defining the thickness of Convex Hull lines
 #' @param main A string specifying the plot title (if included)
 #'
+#' @return \code{eigenvalues} - Eigenvalues for each PC score
 #' @return \code{variance} - Explained variance of each PC Score
 #' @return \code{pc_scores} - The PC scores
 #' @return \code{pca_plot} - a ggplot object containing the pca plot
@@ -27,7 +28,7 @@
 #' \code{\link{kernel_pca}},
 #' \code{\link{pca_biplot}},
 #' \code{\link{kernel_pca_biplot}}
-#' 
+#'
 #' @author Lloyd A. Courtenay
 #'
 #' @examples
@@ -220,6 +221,7 @@ pca_plot <- function(data,
   }
 
   return(list(
+    eigenvalues = PC$eigenvalues,
     variance = expl_var,
     pc_scores = PC$pc_scores,
     pca_plot = pca_plot

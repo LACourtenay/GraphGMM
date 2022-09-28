@@ -29,6 +29,6 @@ Imports:
     car (>= 3.0),
     magrittr (>= 2.0),
     Morpho (>= 2.0)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Depends:
     R(>= 2.10)

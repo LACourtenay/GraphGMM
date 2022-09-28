@@ -50,6 +50,8 @@ for CI ellipses}
 \item{main}{A string specifying the plot title (if included)}
 }
 \value{
+\code{eigenvalues} - Eigenvalues for each PC score
+
 \code{variance} - Explained variance of each PC Score
 
 \code{pc_scores} - The PC scores
