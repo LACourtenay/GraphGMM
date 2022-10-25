@@ -27,7 +27,7 @@ Universidad de Salamanca [USAL]
 
 This code was designed and prepared for the study by:
 <b> Courtenay, L.A.; Aramendi, J.; González-Aguilera, D. (Submitted)
-A Graph Based Geometric Morphometric approach to the analysis of primate radii: A new mathematical model for the processing of landmark data. </b>
+A Graph Based Geometric Morphometric approach to the analysis of primate radii: A new mathematical model for the ordination of landmark data. </b>
 
 TIDOP research group website: http://tidop.usal.es/
 
