@@ -4,7 +4,7 @@
 \alias{knn_graph}
 \title{k-Nearest Neighbour Calculation}
 \usage{
-knn_graph(central_config, k = 3, radius = NULL)
+knn_graph(central_config, k = 3, radius = NULL, verbose = TRUE)
 }
 \arguments{
 \item{central_config}{A (landmark x dimension) matrix containing the
@@ -15,6 +15,9 @@ central configuration that will be used to calculate the graph.}
 \item{radius}{A numeric value defining the radius around a point
 to be considered a neighbour. If a radius is not provided, then all points can
 be considered neighbours.}
+
+\item{verbose}{A boolean value indicating whether a progress bar should be printed across
+screen}
 }
 \value{
 A list of edges.

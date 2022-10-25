@@ -11,6 +11,8 @@
 #' used in the calculation.
 #' @param centre A boolean variable specifying whether data is to be centred first
 #' @param scale A boolean variable specifying whether data is to be scaled first
+#' @param verbose A boolean value indicating whether a progress bar should be printed across
+#' screen
 #'
 #' @section Details:
 #' The calculation of the optimal number of PC scores is performed by calculating the
@@ -33,11 +35,12 @@
 #' data <- vector_from_landmarks(GPAshape$coordinates)
 #'
 #' calculate_optimal_pc_scores(data, N_permutations = 10000)
-#'  
+#'
 #' @export
 
 calculate_optimal_pc_scores <- function(data, N_permutations = 10000,
-                                        centre = TRUE, scale = FALSE) {
+                                        centre = TRUE, scale = FALSE,
+                                        verbose = TRUE) {
 
   if(!is.matrix(data) & !is.data.frame(data)) {
     stop("Data parameter must be a data.frame or a matrix of values")
@@ -55,8 +58,10 @@ calculate_optimal_pc_scores <- function(data, N_permutations = 10000,
     stop("The scale parameter only accepts boolean TRUE or FALSE values")
   }
 
-  pb <- txtProgressBar(min = 0, max = N_permutations,
-                       style = 3, width = 100, char = "=")
+  if (verbose == TRUE) {
+    pb <- txtProgressBar(min = 0, max = N_permutations,
+                         style = 3, width = 100, char = "=")
+  }
 
   PC <- prcomp(as.matrix(data), center = centre, scale = scale)
 
@@ -70,7 +75,9 @@ calculate_optimal_pc_scores <- function(data, N_permutations = 10000,
     PC_perm <- prcomp(as.matrix(expr_perm), center = centre, scale = scale)
     expl_var_perm[i, ] <- PC_perm$sdev^2 / sum(PC_perm$sdev^2)
 
-    setTxtProgressBar(pb, i)
+    if (verbose == TRUE) {
+      setTxtProgressBar(pb, i)
+    }
 
   }
 

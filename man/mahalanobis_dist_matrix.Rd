@@ -4,7 +4,13 @@
 \alias{mahalanobis_dist_matrix}
 \title{Mahalanobis Distances and p-Values}
 \usage{
-mahalanobis_dist_matrix(data, labels, plot_results = TRUE, robust = TRUE)
+mahalanobis_dist_matrix(
+  data,
+  labels,
+  plot_results = TRUE,
+  robust = TRUE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{data}{A matrix containing the data}
@@ -16,6 +22,9 @@ A maximum of 4 groups can be included for results to be plotted.}
 
 \item{robust}{A boolean value defining whether p-values are to be computed
 using robust statistical metrics.}
+
+\item{verbose}{A boolean value indicating whether a progress bar should be printed across
+screen}
 }
 \value{
 \code{distances} - A distance matrix

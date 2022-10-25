@@ -4,7 +4,12 @@
 \alias{similarity_matrix}
 \title{Calculate Similarity Matrix}
 \usage{
-similarity_matrix(landmark_configuration, method = "cosine", unravel = TRUE)
+similarity_matrix(
+  landmark_configuration,
+  method = "cosine",
+  unravel = TRUE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{landmark_configuration}{A (landmark x dimension x individuals)
@@ -14,6 +19,9 @@ array (or tensor) containing landmark coordinates}
 ("cosine", "euclid" or "chebyshev").}
 
 \item{unravel}{A boolean defining whether to turn matrices into similarity vectors}
+
+\item{verbose}{A boolean value indicating whether a progress bar should be printed across
+screen}
 }
 \value{
 similarity vectors or matrices for each individual

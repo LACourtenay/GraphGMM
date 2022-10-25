@@ -9,6 +9,8 @@
 #' @param method The method to be used to define the similarity matrix
 #' ("cosine", "euclid" or "chebyshev").
 #' @param unravel A boolean defining whether to turn matrices into similarity vectors
+#' @param verbose A boolean value indicating whether a progress bar should be printed across
+#' screen
 #'
 #' @section Description:
 #' Landmark configurations can be converted
@@ -43,7 +45,8 @@
 #'
 #' @export
 
-similarity_matrix <- function(landmark_configuration, method = "cosine", unravel = TRUE) {
+similarity_matrix <- function(landmark_configuration, method = "cosine", unravel = TRUE,
+                              verbose = TRUE) {
 
   if (!is.array(landmark_configuration)) {
     stop("Landmark configuration must be a (landmark x dimension x individual) array")
@@ -69,8 +72,11 @@ similarity_matrix <- function(landmark_configuration, method = "cosine", unravel
             0)
   )
 
-  pb <- txtProgressBar(min = 0, max = dim(landmark_configuration)[3],
-                       style = 3, width = 100, char = "=")
+  if (verbose == TRUE) {
+    pb <- txtProgressBar(min = 0, max = dim(landmark_configuration)[3],
+                         style = 3, width = 100, char = "=")
+  }
+
   for (i in 1:dim(landmark_configuration)[3]) {
     dist_matrix <- matrix(numeric(), nrow = dim(landmark_configuration)[1],
                           ncol = dim(landmark_configuration)[1])
@@ -103,7 +109,11 @@ similarity_matrix <- function(landmark_configuration, method = "cosine", unravel
       dist_matrix,
       along = 3
     )
-    setTxtProgressBar(pb, i)
+
+    if (verbose == TRUE) {
+      setTxtProgressBar(pb, i)
+    }
+
   }
 
   name_matrix <- matrix(nrow = dim(landmark_configuration)[1],

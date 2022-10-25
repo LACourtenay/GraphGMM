@@ -9,12 +9,14 @@
 #' @param radius A numeric value defining the radius around a point
 #' to be considered a neighbour. If a radius is not provided, then all points can
 #' be considered neighbours.
+#' @param verbose A boolean value indicating whether a progress bar should be printed across
+#' screen
 #'
 #' @section Details:
 #' This function calculates the nearest neighbours of each landmark.
 #'
 #' @return A list of edges.
-#' 
+#'
 #' @author Lloyd A. Courtenay
 #'
 #' @examples
@@ -37,7 +39,8 @@
 #'
 #' @export
 
-knn_graph <- function(central_config, k = 3, radius = NULL) {
+knn_graph <- function(central_config, k = 3, radius = NULL,
+                      verbose = TRUE) {
 
   if("array" %!in% class(central_config)) {
     if ("matrix" %!in% class(central_config)) {
@@ -65,9 +68,12 @@ knn_graph <- function(central_config, k = 3, radius = NULL) {
     }
   }
 
-  cat("\nCalculating 3D distances\n")
-  pb_distances <- txtProgressBar(min = 0, max = dim(central_config)[1],
-                                 style = 3, width = 100, char = "=")
+  if (verbose == TRUE) {
+    cat("\nCalculating 3D distances\n")
+    pb_distances <- txtProgressBar(min = 0, max = dim(central_config)[1],
+                                   style = 3, width = 100, char = "=")
+  }
+
   distances <- c()
   for (lm_from in 1:dim(central_config)[1]) {
     for (lm_to in 1:dim(central_config)[1]) {
@@ -77,7 +83,11 @@ knn_graph <- function(central_config, k = 3, radius = NULL) {
                                testNA = FALSE)
       )
     }
-    setTxtProgressBar(pb_distances, lm_from)
+
+    if (verbose == TRUE) {
+      setTxtProgressBar(pb_distances, lm_from)
+    }
+
   }
   distance_matrix <- matrix(distances, ncol = dim(central_config)[1])
   name_matrix <- matrix(nrow = dim(central_config)[1], ncol = dim(central_config)[1])
@@ -92,9 +102,11 @@ knn_graph <- function(central_config, k = 3, radius = NULL) {
                          ncol = 2, byrow = TRUE)
   distance_table <- data.frame(from = name_vectors[,2], to = name_vectors[,1], dist = single_direction_distances)
 
-  cat("\nCalculating nearest neighbours\n")
-  pb_graph <- txtProgressBar(min = 0, max = dim(central_config)[1],
-                             style = 3, width = 100, char = "=")
+  if (verbose == TRUE) {
+    cat("\nCalculating nearest neighbours\n")
+    pb_graph <- txtProgressBar(min = 0, max = dim(central_config)[1],
+                               style = 3, width = 100, char = "=")
+  }
 
   edges <- array(numeric(), dim = c(0, 2))
   for (i in 1:dim(central_config)[1]) {
@@ -112,7 +124,11 @@ knn_graph <- function(central_config, k = 3, radius = NULL) {
         edges <- abind::abind(edges, lm_nn[,1:2], along = 1)
       }
     }
-    setTxtProgressBar(pb_graph, lm_from)
+
+    if (verbose == TRUE) {
+      setTxtProgressBar(pb_graph, lm_from)
+    }
+
   }
 
   edges <- edges[complete.cases(edges),]

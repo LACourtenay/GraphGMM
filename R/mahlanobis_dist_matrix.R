@@ -10,13 +10,15 @@
 #' A maximum of 4 groups can be included for results to be plotted.
 #' @param robust A boolean value defining whether p-values are to be computed
 #' using robust statistical metrics.
+#' @param verbose A boolean value indicating whether a progress bar should be printed across
+#' screen
 #'
 #' @return \code{distances} - A distance matrix
 #' @return \code{p_values} - p-Values computed from the distance matrix
 #'
 #' @seealso
 #' \code{\link{procD_comparisons}}
-#' 
+#'
 #' @author Lloyd A. Courtenay
 #'
 #' @examples
@@ -68,7 +70,8 @@
 
 mahalanobis_dist_matrix <- function(data, labels,
                                    plot_results = TRUE,
-                                   robust = TRUE) {
+                                   robust = TRUE,
+                                   verbose = TRUE) {
 
   if(!is.matrix(data)) {
     stop("Input must be a matrix")
@@ -98,8 +101,10 @@ mahalanobis_dist_matrix <- function(data, labels,
     dev.new(); par(mfrow = c(length(level_list), length(level_list)))
   }
 
-  pb <- txtProgressBar(min = 0, max = length(level_list),
-                       style = 3, width = 100, char = "=")
+  if (verbose == TRUE) {
+    pb <- txtProgressBar(min = 0, max = length(level_list),
+                         style = 3, width = 100, char = "=")
+  }
 
   for (i in 1:length(level_list)) {
 
@@ -160,15 +165,16 @@ mahalanobis_dist_matrix <- function(data, labels,
 
     }
 
-    setTxtProgressBar(pb, i)
+    if (verbose == TRUE) {
+      setTxtProgressBar(pb, i)
+      cat("\n")
+    }
 
   }
 
   if (plot_results != FALSE) {
     par(mfrow = c(1,1))
   }
-
-  cat("\n")
 
   return(list(distances = as.dist(t(dist_matrix)),
               p_values = as.dist(t(p_value_matrix))))

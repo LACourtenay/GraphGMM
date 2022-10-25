@@ -8,7 +8,8 @@ calculate_optimal_pc_scores(
   data,
   N_permutations = 10000,
   centre = TRUE,
-  scale = FALSE
+  scale = FALSE,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -22,6 +23,9 @@ used in the calculation.}
 \item{centre}{A boolean variable specifying whether data is to be centred first}
 
 \item{scale}{A boolean variable specifying whether data is to be scaled first}
+
+\item{verbose}{A boolean value indicating whether a progress bar should be printed across
+screen}
 }
 \value{
 A plot presenting the results from the permuted calculation of the
@@ -51,5 +55,5 @@ GPAshape <- GPA(apes$x)
 data <- vector_from_landmarks(GPAshape$coordinates)
 
 calculate_optimal_pc_scores(data, N_permutations = 10000)
- 
+
 }

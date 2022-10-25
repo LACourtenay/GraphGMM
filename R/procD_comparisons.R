@@ -9,6 +9,8 @@
 #' A maximum of 4 groups can be included for results to be plotted.
 #' @param robust A boolean value defining whether p-values are to be computed
 #' using robust statistical metrics.
+#' @param verbose A boolean value indicating whether a progress bar should be printed across
+#' screen
 #'
 #' @return p-Values computed from procrustes distance matrices
 #'
@@ -49,7 +51,8 @@
 #' @export
 
 procD_comparisons <- function(lm_matrix, labels, plot_results = TRUE,
-                                 robust = TRUE) {
+                              robust = TRUE,
+                              verbose = TRUE) {
 
   if(!is.array(lm_matrix) | is.na(dim(lm_matrix)[3])) {
     stop("Input must be a (n x n x individual) array")
@@ -86,8 +89,10 @@ procD_comparisons <- function(lm_matrix, labels, plot_results = TRUE,
     dev.new(); par(mfrow = c(length(level_list), length(level_list)))
   }
 
-  pb <- txtProgressBar(min = 0, max = dim(reference_matrices)[3],
-                       style = 3, width = 100, char = "=")
+  if (verbose == TRUE) {
+    pb <- txtProgressBar(min = 0, max = dim(reference_matrices)[3],
+                         style = 3, width = 100, char = "=")
+  }
 
   for (i in 1:dim(reference_matrices)[3]) {
     from_target <- c()
@@ -140,14 +145,18 @@ procD_comparisons <- function(lm_matrix, labels, plot_results = TRUE,
       p_value_matrix[i, j] = p_val
 
     }
-    setTxtProgressBar(pb, i)
+
+    if (verbose == TRUE) {
+      setTxtProgressBar(pb, i)
+      cat("\n")
+    }
+
+
   }
 
   if (plot_results != FALSE) {
     par(mfrow = c(1,1))
   }
-
-  cat("\n")
 
   return(as.dist(t(p_value_matrix)))
 }

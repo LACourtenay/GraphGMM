@@ -8,7 +8,8 @@ graph_embeddings(
   landmarks,
   edge_matrix,
   num_convolutions = 2,
-  dist_method = "cosine"
+  dist_method = "cosine",
+  verbose = TRUE
 )
 }
 \arguments{
@@ -23,7 +24,10 @@ to calculate the final embedding. num_convolutions can not be more than the diam
 of the graph.}
 
 \item{dist_method}{The method to be used to define the final similarity matrix (
-"cosine", "euclid" or "chebyshev").}
+"cosine", "euclid" or "chebyshev").ç}
+
+\item{verbose}{A boolean value indicating whether a progress bar should be printed across
+screen}
 }
 \value{
 \code{similarity_vector} - similarity vectors for each individual

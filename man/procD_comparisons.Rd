@@ -4,7 +4,13 @@
 \alias{procD_comparisons}
 \title{Procrustes p-Value calculations}
 \usage{
-procD_comparisons(lm_matrix, labels, plot_results = TRUE, robust = TRUE)
+procD_comparisons(
+  lm_matrix,
+  labels,
+  plot_results = TRUE,
+  robust = TRUE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{lm_matrix}{A matrix containing the data}
@@ -16,6 +22,9 @@ A maximum of 4 groups can be included for results to be plotted.}
 
 \item{robust}{A boolean value defining whether p-values are to be computed
 using robust statistical metrics.}
+
+\item{verbose}{A boolean value indicating whether a progress bar should be printed across
+screen}
 }
 \value{
 p-Values computed from procrustes distance matrices

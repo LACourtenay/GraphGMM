@@ -12,7 +12,9 @@
 #' to calculate the final embedding. num_convolutions can not be more than the diameter
 #' of the graph.
 #' @param dist_method The method to be used to define the final similarity matrix (
-#' "cosine", "euclid" or "chebyshev").
+#' "cosine", "euclid" or "chebyshev").ç
+#' @param verbose A boolean value indicating whether a progress bar should be printed across
+#' screen
 #'
 #' @section Details:
 #' This function is the central component of the graphGMM library, used to project landmark
@@ -100,7 +102,8 @@
 #' @export
 
 graph_embeddings <- function(landmarks, edge_matrix, num_convolutions = 2,
-                            dist_method = "cosine") {
+                            dist_method = "cosine",
+                            verbose = TRUE) {
 
   if (!is.array(landmarks) | is.na(dim(landmarks)[3])) {
     stop("Landmark configuration must be a (landmark x dimension x individual) array")
@@ -137,10 +140,13 @@ graph_embeddings <- function(landmarks, edge_matrix, num_convolutions = 2,
     dim = dim(landmarks)
   )
 
+  if (verbose == TRUE) {
+    cat("\nEmbedding data...")
+    pb <- txtProgressBar(min = 0, max = dim(landmarks)[3],
+                         style = 3, width = 100, char = "=")
+  }
+
   # for loop for the number of convolutions, fill an array with the respected embedded feature matrix
-  cat("\nEmbedding data...")
-  pb <- txtProgressBar(min = 0, max = dim(landmarks)[3],
-                       style = 3, width = 100, char = "=")
 
   for (i in 1:dim(landmarks)[3]) {
 
@@ -214,7 +220,9 @@ graph_embeddings <- function(landmarks, edge_matrix, num_convolutions = 2,
 
     embedded_landmarks[,,i] <- feature_embedding
 
-    setTxtProgressBar(pb, i)
+    if (verbose == TRUE) {
+      setTxtProgressBar(pb, i)
+    }
 
   }
 
