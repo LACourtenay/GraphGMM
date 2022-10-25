@@ -43,7 +43,6 @@ TIDOP research group website: http://tidop.usal.es/
 * Rtsne (>= 0.15),
 * rgl (>= 0.105.0),
 * dplyr (>= 1.0),
-* geomorph (>= 3.3.0),
 * sm (>= 2.2),
 * shapes (>= 1.2.0),
 * robustbase (>= 0.9),

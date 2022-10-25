@@ -19,7 +19,6 @@
 # #' @author Lloyd A. Courtenay
 # #'
 # #' @examples
-# #' library(geomorph)
 # #' library(shapes)
 # #' library(GraphGMM)
 # #'
