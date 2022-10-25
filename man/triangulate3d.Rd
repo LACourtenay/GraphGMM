@@ -51,7 +51,7 @@ data(macf.dat)
 GPAshape <- GPA(macf.dat)
 
 # calculate central configuration
-central_config <- calc_central_morph(GPAshape$rotated)
+central_config <- calc_central_morph(GPAshape$coordinates)
 
 # compute graph edges
 edges <- triangulate3d(central_config)

@@ -39,7 +39,7 @@ data(apes)
 
 # Generalized Procrustes Fit
 GPAshape <- GPA(apes$x)
-data <- vector_from_landmarks(GPAshape$rotated)
+data <- vector_from_landmarks(GPAshape$coordinates)
 
 # perform non linear transformation
 

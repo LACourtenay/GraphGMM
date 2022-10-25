@@ -27,7 +27,7 @@ data(apes)
 GPAshape <- GPA(apes$x)
 
 # calculate central configuration
-central_config <- calc_central_morph(GPAshape$rotated)
+central_config <- calc_central_morph(GPAshape$coordinates)
 
 # compute graph edges
 edges <- triangulate2d(central_config)
@@ -36,7 +36,7 @@ edges <- triangulate2d(central_config)
 edge_list <- as_edge_list(edges)
 
 # create graph embeddings
-graph_object <- graph_embeddings(GPAshape$rotated, edge_list)
+graph_object <- graph_embeddings(GPAshape$coordinates, edge_list)
 
 }
 \seealso{

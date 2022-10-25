@@ -11,7 +11,8 @@ tps_visualisation(
   pccoord,
   type,
   edges = NULL,
-  reference_shape = NULL
+  reference_shape = NULL,
+  robust = FALSE
 )
 }
 \arguments{
@@ -24,13 +25,13 @@ all landmark coordinates after Generalized Procrustes Analyses.}
 
 \item{pccoord}{The coordinates used for shape prediction}
 
-\item{type}{The type of visualisation; 'graph' visualisation, 'surface' for 3D
-surfaces, and 'warpgrid' for thin plate spline warpgrid visualisation (from geomorph)}
+\item{type}{The type of visualisation; 'graph' visualisation or 'surface' for 3D
+surfaces.}
 
 \item{edges}{A edge matrix used for 'graph' type visualisation}
 
-\item{reference_shape}{The central landmark configuration used for 'warpgrid'
-visualisation}
+\item{robust}{A boolean value indicating whether robust metrics will be incorporated into the
+prediction of landmarks.}
 }
 \value{
 A plotted visualisation of the predicted shape
@@ -39,11 +40,15 @@ The predicted landmark coordinates
 }
 \description{
 The present function can be used to calculate and visualise morphological variation given
-a set of Procrustes superimposed coordinates and a feature space.
+a set of Procrustes superimposed coordinates and a feature space, based on the concept
+of Thin Plate Splines (Bookstein, 1989)
 }
 \section{Details}{
 
-...
+This function generates a plot of the shape or form differences for a given point
+in feature space (typically PCA). Using the \code{morphological_predictor} function,
+the function first calculates the landmark coordinates of the point of interest,
+followed by the visualisation of these changes using either a graph or a surface plot.
 }
 
 \section{Bibliography}{
@@ -54,7 +59,6 @@ deformations, Transactions on Pattern Analysis in Machine Intelligence.
 }
 
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -67,7 +71,7 @@ data(apes)
 GPAshape <- GPA(apes$x)
 
 # calculate central configuration
-central_config <- calc_central_morph(GPAshape$rotated)
+central_config <- calc_central_morph(GPAshape$coordinates)
 
 # compute graph edges
 edges <- triangulate2d(central_config)
@@ -76,7 +80,7 @@ edges <- triangulate2d(central_config)
 edge_list <- as_edge_list(edges)
 
 # create graph embeddings
-graph_object <- graph_embeddings(GPAshape$rotated, edge_list,
+graph_object <- graph_embeddings(GPAshape$coordinates, edge_list,
                                  num_convolutions = 2)
 
 pca <- pca_plot(graph_object$similarity_vector, apes$group)
@@ -85,40 +89,31 @@ pca$pca_plot # visualise pca_plot
 
 # visualise pc1 extremities
 
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
                   pccoord = max(pca$pc_scores[,1]), type = "graph",
                   edges = edges)
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
                   pccoord = min(pca$pc_scores[,1]), type = "graph",
                   edges = edges)
 
 # visualise pc2 extremities
 
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 2,
+tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 2,
                   pccoord = max(pca$pc_scores[,2]), type = "graph",
                   edges = edges)
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 2,
+tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 2,
                   pccoord = min(pca$pc_scores[,2]), type = "graph",
                   edges = edges)
-
-# warpgrid visualisation
-
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
-                  pccoord = max(pca$pc_scores[,1]), type = "warpgrid",
-                  reference_shape = central_config)
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
-                  pccoord = min(pca$pc_scores[,1]), type = "warpgrid",
-                  reference_shape = central_config)
 
 # 3D example --------------------------------------
 
 data(macf.dat)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(macf.dat)
+GPAshape <- GPA(macf.dat)
 
 # calculate central configuration
-central_config <- calc_central_morph(GPAshape$rotated)
+central_config <- calc_central_morph(GPAshape$coordinates)
 
 # compute graph edges
 edges <- triangulate3d(central_config)
@@ -127,29 +122,35 @@ edges <- triangulate3d(central_config)
 edge_list <- as_edge_list(edges)
 
 # create graph embeddings
-graph_object <- graph_embeddings(GPAshape$rotated, edge_list,
+graph_object <- graph_embeddings(GPAshape$coordinates, edge_list,
                                  num_convolutions = 2)
 
 pca <- pca_plot(graph_object$similarity_vector)
 
 pca$pca_plot # visualise pca_plot
 
-# visualise pc1 extremities
+# visualise pc1 extremities as surface plot
 
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
                   pccoord = max(pca$pc_scores[,1]), type = "surface")
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
                   pccoord = min(pca$pc_scores[,1]), type = "surface")
 
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+# visualise pc1 extremities as graph plot
+
+tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
                   pccoord = max(pca$pc_scores[,1]), type = "graph",
                   edges = edges)
-tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
                   pccoord = min(pca$pc_scores[,1]), type = "graph",
                   edges = edges)
 
 }
 \seealso{
-\code{\link[geomorph]{shape.predictor}} and \code{\link[geomorph]{plotRefToTarget}}
+\code{morphological_predictor}, or \code{\link[geomorph]{shape.predictor}}
+and \code{\link[geomorph]{plotRefToTarget}}
 from the \code{geomorph} library
+}
+\author{
+Lloyd A. Courtenay
 }

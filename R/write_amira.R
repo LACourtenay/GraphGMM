@@ -30,7 +30,7 @@
 # #' GPAshape <- procGPA(apes$x)
 # #'
 # #' # calculate central configuration
-# #' central_config <- calc_central_morph(GPAshape$rotated)
+# #' central_config <- calc_central_morph(GPAshape$coordinates)
 # #'
 # #' write_amira("central_landmark_configuration", central_config)
 # #'

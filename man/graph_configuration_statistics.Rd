@@ -55,10 +55,10 @@ GPAshape <- GPA(apes$x)
 
 # separate the samples under analysis
 
-female_gorilla <- separate_samples(GPAshape$rotated,
+female_gorilla <- separate_samples(GPAshape$coordinates,
                                    apes$group,
                                    "gorf")
-male_gorilla <- separate_samples(GPAshape$rotated,
+male_gorilla <- separate_samples(GPAshape$coordinates,
                                  apes$group,
                                  "gorm")
 

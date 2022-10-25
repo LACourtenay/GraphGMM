@@ -38,7 +38,7 @@ data(apes)
 GPAshape <- GPA(apes$x)
 
 # calculate central configuration
-central_config <- calc_central_morph(GPAshape$rotated)
+central_config <- calc_central_morph(GPAshape$coordinates)
 
 # compute graph edges
 edges <- knn_graph(central_config)

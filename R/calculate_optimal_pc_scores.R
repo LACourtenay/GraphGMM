@@ -30,7 +30,7 @@
 #' GPAshape <- GPA(apes$x)
 #'
 #' # calculate optimal number of PC scores
-#' data <- vector_from_landmarks(GPAshape$rotated)
+#' data <- vector_from_landmarks(GPAshape$coordinates)
 #'
 #' calculate_optimal_pc_scores(data, N_permutations = 10000)
 #'  

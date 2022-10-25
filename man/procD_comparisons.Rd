@@ -38,7 +38,7 @@ GPAshape <- GPA(plethodon$land)
 
 # procrustes distances
 
-procD_comparisons(GPAshape$rotated, plethodon$species)
+procD_comparisons(GPAshape$coordinates, plethodon$species)
 
 # example 2 ----------------------------------
 
@@ -50,7 +50,7 @@ GPAshape <- GPA(apes$x)
 
 # procrustes distances
 
-procD_comparisons(GPAshape$rotated, apes$group, plot_results = FALSE)
+procD_comparisons(GPAshape$coordinates, apes$group, plot_results = FALSE)
 
 }
 \seealso{

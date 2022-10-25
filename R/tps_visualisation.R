@@ -67,19 +67,19 @@
 #'
 #' # visualise pc1 extremities
 #'
-#' tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+#' tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
 #'                   pccoord = max(pca$pc_scores[,1]), type = "graph",
 #'                   edges = edges)
-#' tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+#' tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
 #'                   pccoord = min(pca$pc_scores[,1]), type = "graph",
 #'                   edges = edges)
 #'
 #' # visualise pc2 extremities
 #'
-#' tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 2,
+#' tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 2,
 #'                   pccoord = max(pca$pc_scores[,2]), type = "graph",
 #'                   edges = edges)
-#' tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 2,
+#' tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 2,
 #'                   pccoord = min(pca$pc_scores[,2]), type = "graph",
 #'                   edges = edges)
 #'
@@ -91,7 +91,7 @@
 #' GPAshape <- GPA(macf.dat)
 #'
 #' # calculate central configuration
-#' central_config <- calc_central_morph(GPAshape$rotated)
+#' central_config <- calc_central_morph(GPAshape$coordinates)
 #'
 #' # compute graph edges
 #' edges <- triangulate3d(central_config)
@@ -100,7 +100,7 @@
 #' edge_list <- as_edge_list(edges)
 #'
 #' # create graph embeddings
-#' graph_object <- graph_embeddings(GPAshape$rotated, edge_list,
+#' graph_object <- graph_embeddings(GPAshape$coordinates, edge_list,
 #'                                  num_convolutions = 2)
 #'
 #' pca <- pca_plot(graph_object$similarity_vector)
@@ -109,17 +109,17 @@
 #'
 #' # visualise pc1 extremities as surface plot
 #'
-#' tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+#' tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
 #'                   pccoord = max(pca$pc_scores[,1]), type = "surface")
-#' tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+#' tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
 #'                   pccoord = min(pca$pc_scores[,1]), type = "surface")
 #'
 #' # visualise pc1 extremities as graph plot
 #'
-#' tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+#' tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
 #'                   pccoord = max(pca$pc_scores[,1]), type = "graph",
 #'                   edges = edges)
-#' tps_visualisation(GPAshape$rotated, pca$pc_scores, pcscore = 1,
+#' tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
 #'                   pccoord = min(pca$pc_scores[,1]), type = "graph",
 #'                   edges = edges)
 #'
