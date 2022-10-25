@@ -131,7 +131,6 @@ tps_visualisation <- function(gpa_coordinates,
                               pccoord,
                               type,
                               edges = NULL,
-                              reference_shape = NULL,
                               robust = FALSE) {
 
   if (missing(gpa_coordinates)) {

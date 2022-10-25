@@ -15,15 +15,15 @@ morphological_predictor(
 \item{gpa_coordinates}{A (landmark x dimension x individuals) array (or tensor) containing
 all landmark coordinates after Generalized Procrustes Analyses.}
 
+\item{morph_descriptors}{A matrix of morphological descriptors that will be used to construct
+the multivariate linear function that will be used to predict landmarks. e.g. a matrix
+of PC scores.}
+
 \item{target_pred}{A vector of morphological variables that will be used to predict their corresponding
 landmarks.}
 
 \item{robust}{A boolean value indicating whether robust metrics will be incorporated into the
 prediction of landmarks.}
-
-\item{morph_descriptos}{A matrix of morphological descriptors that will be used to construct
-the multivariate linear function that will be used to predict landmarks. e.g. a matrix
-of PC scores.}
 }
 \value{
 A matrix of predicted landmark coordinates
@@ -41,7 +41,6 @@ given feature space.
 }
 
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -70,70 +69,15 @@ pca <- pca_plot(graph_object$similarity_vector, apes$group)
 
 pca$pca_plot # visualise pca_plot
 
-# visualise pc1 extremities
+# predict the landmarks of a given point
 
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
-                  pccoord = max(pca$pc_scores[,1]), type = "graph",
-                  edges = edges)
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
-                  pccoord = min(pca$pc_scores[,1]), type = "graph",
-                  edges = edges)
+tps_example <- morphological_predictor(GPAshape$coordinates,
+                                       pca$pc_scores[,1:2],
+                                       target_pred = c(0.01, 0.01))
 
-# visualise pc2 extremities
+# create simple plot of the predicted landmarks
 
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 2,
-                  pccoord = max(pca$pc_scores[,2]), type = "graph",
-                  edges = edges)
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 2,
-                  pccoord = min(pca$pc_scores[,2]), type = "graph",
-                  edges = edges)
-
-# warpgrid visualisation
-
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
-                  pccoord = max(pca$pc_scores[,1]), type = "warpgrid",
-                  reference_shape = central_config)
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
-                  pccoord = min(pca$pc_scores[,1]), type = "warpgrid",
-                  reference_shape = central_config)
-
-# 3D example --------------------------------------
-
-data(macf.dat)
-
-# Generalized Procrustes Fit
-GPAshape <- GPA(macf.dat)
-
-# calculate central configuration
-central_config <- calc_central_morph(GPAshape$coordinates)
-
-# compute graph edges
-edges <- triangulate3d(central_config)
-
-# extract edge list
-edge_list <- as_edge_list(edges)
-
-# create graph embeddings
-graph_object <- graph_embeddings(GPAshape$coordinates, edge_list,
-                                 num_convolutions = 2)
-
-pca <- pca_plot(graph_object$similarity_vector)
-
-pca$pca_plot # visualise pca_plot
-
-# visualise pc1 extremities
-
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
-                  pccoord = max(pca$pc_scores[,1]), type = "surface")
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
-                  pccoord = min(pca$pc_scores[,1]), type = "surface")
-
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
-                  pccoord = max(pca$pc_scores[,1]), type = "graph",
-                  edges = edges)
-tps_visualisation(GPAshape$coordinates, pca$pc_scores, pcscore = 1,
-                  pccoord = min(pca$pc_scores[,1]), type = "graph",
-                  edges = edges)
+plot(tps_example, asp = 1, pch = 19)
 
 }
 \seealso{

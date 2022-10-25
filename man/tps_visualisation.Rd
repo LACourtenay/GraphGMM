@@ -11,7 +11,6 @@ tps_visualisation(
   pccoord,
   type,
   edges = NULL,
-  reference_shape = NULL,
   robust = FALSE
 )
 }

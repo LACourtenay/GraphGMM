@@ -49,7 +49,7 @@ data(apes)
 GPAshape <- GPA(apes$x)
 
 # calculate central configuration
-lm_similarities <- similarity_matrix(GPAshape$rotated)
+lm_similarities <- similarity_matrix(GPAshape$coordinates)
 
 pca_plot(lm_similarities, apes$group)
 
