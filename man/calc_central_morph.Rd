@@ -20,7 +20,6 @@ landmark coordinates. To comply with robust statistical parameters, this functio
 the option of both the median and mean landmark configuration
 }
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -28,7 +27,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 # calculate central configuration
 central_config <- calc_central_morph(GPAshape$rotated)

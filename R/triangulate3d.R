@@ -23,7 +23,6 @@
 #' @seealso \code{\link[Rvcg]{vcgBallPivoting}} of the \code{Rvcg} library
 #'
 #' @examples
-#' library(geomorph)
 #' library(shapes)
 #' library(GraphGMM)
 #'
@@ -31,7 +30,7 @@
 #' data(macf.dat)
 #'
 #' # Generalized Procrustes Fit
-#' GPAshape <- procGPA(macf.dat)
+#' GPAshape <- GPA(macf.dat)
 #'
 #' # calculate central configuration
 #' central_config <- calc_central_morph(GPAshape$rotated)

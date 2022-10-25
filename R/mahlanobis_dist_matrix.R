@@ -30,7 +30,7 @@
 #' data(plethodon)
 #'
 #' # Generalized Procrustes Fit
-#' GPAshape <- procGPA(plethodon$land)
+#' GPAshape <- GPA(plethodon$land)
 #' data <- vector_from_landmarks(GPAshape$rotated)
 #'
 #' # pca
@@ -50,7 +50,7 @@
 #' data(apes)
 #'
 #' # Generalized Procrustes Fit
-#' GPAshape <- procGPA(apes$x)
+#' GPAshape <- GPA(apes$x)
 #' data <- vector_from_landmarks(GPAshape$rotated)
 #'
 #' # pca

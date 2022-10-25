@@ -44,7 +44,6 @@ landmark is in the general context of the landmark configuration.
 }
 
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -52,7 +51,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 # separate the samples under analysis
 

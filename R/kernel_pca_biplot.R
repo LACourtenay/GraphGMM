@@ -49,7 +49,6 @@
 #' @author Lloyd A. Courtenay
 #' 
 #' @examples
-#' library(geomorph)
 #' library(shapes)
 #' library(GraphGMM)
 #'
@@ -57,7 +56,7 @@
 #' data(apes)
 #'
 #' # Generalized Procrustes Fit
-#' GPAshape <- procGPA(apes$x)
+#' GPAshape <- GPA(apes$x)
 #' data <- vector_from_landmarks(GPAshape$rotated)
 #'
 #' # plot non-linear pca

@@ -38,7 +38,6 @@ observed variance explained by each PC with the permuted variance.
 }
 
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -46,7 +45,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 # calculate optimal number of PC scores
 data <- vector_from_landmarks(GPAshape$rotated)

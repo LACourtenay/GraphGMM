@@ -47,7 +47,6 @@ A visualisation of the landmark graph
 This function can be used to visualise the calculated properties of a given landmark graph.
 }
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -55,7 +54,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 # separate the samples under analysis
 

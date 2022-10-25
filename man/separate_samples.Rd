@@ -22,7 +22,6 @@ A (landmark x dimension x individual) array of landmarks from the defined sample
 This function can be used to separate landmarks from a specific sample.
 }
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -30,7 +29,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 # separate the samples under analysis
 

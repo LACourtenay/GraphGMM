@@ -25,7 +25,6 @@ Processing Systems, 20:1-8. DOI: 10.5555/2981562.2981710
 }
 
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -33,7 +32,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 data <- vector_from_landmarks(GPAshape$rotated)
 
 # perform non linear transformation

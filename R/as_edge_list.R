@@ -11,7 +11,6 @@
 #' @seealso \code{\link{graph_embeddings}}
 #'
 #' @examples
-#' library(geomorph)
 #' library(shapes)
 #' library(GraphGMM)
 #'
@@ -19,7 +18,7 @@
 #' data(apes)
 #'
 #' # Generalized Procrustes Fit
-#' GPAshape <- procGPA(apes$x)
+#' GPAshape <- GPA(apes$x)
 #'
 #' # calculate central configuration
 #' central_config <- calc_central_morph(GPAshape$rotated)

@@ -24,7 +24,6 @@ Bulletin l’Academie de Sciences l’URSS Classe des Sciences Mathematiques et 
 }
 
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -32,7 +31,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 # calculate central configuration
 central_config <- calc_central_morph(GPAshape$rotated)

@@ -39,7 +39,6 @@ Machine Learning with Graphs.
 }
 
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -47,7 +46,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 # calculate central configuration
 lm_similarities <- similarity_matrix(GPAshape$rotated)

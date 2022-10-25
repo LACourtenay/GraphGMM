@@ -41,7 +41,6 @@ IEEE Transaction on Visualization and Computer Graphics, 5(4):349-359
 }
 
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -49,7 +48,7 @@ library(GraphGMM)
 data(macf.dat)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(macf.dat)
+GPAshape <- GPA(macf.dat)
 
 # calculate central configuration
 central_config <- calc_central_morph(GPAshape$rotated)

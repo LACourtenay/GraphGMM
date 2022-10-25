@@ -26,7 +26,6 @@
 #' \code{\link{separate_samples}}, \code{\link{graph_configuration_statistics}}
 #'
 #' @examples
-#' library(geomorph)
 #' library(shapes)
 #' library(GraphGMM)
 #'
@@ -34,7 +33,7 @@
 #' data(apes)
 #'
 #' # Generalized Procrustes Fit
-#' GPAshape <- procGPA(apes$x)
+#' GPAshape <- GPA(apes$x)
 #'
 #' # separate the samples under analysis
 #'

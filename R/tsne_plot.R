@@ -36,7 +36,6 @@
 #' \code{\link[Rtsne]{Rtsne}} of the \code{Rtsne} library,
 #'
 #' @examples
-#' library(geomorph)
 #' library(shapes)
 #' library(GraphGMM)
 #'
@@ -44,7 +43,7 @@
 #' data(apes)
 #'
 #' # Generalized Procrustes Fit
-#' GPAshape <- procGPA(apes$x)
+#' GPAshape <- GPA(apes$x)
 #' data <- vector_from_landmarks(GPAshape$rotated)
 #'
 #' # plot pca

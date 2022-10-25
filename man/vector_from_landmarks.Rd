@@ -18,7 +18,6 @@ This function can be used to convert a landmark array into a vector for dimensio
 reduction (PCA, non-linear PCA, or tSNE)
 }
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -26,7 +25,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 data <- vector_from_landmarks(GPAshape$rotated)
 

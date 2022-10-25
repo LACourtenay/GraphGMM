@@ -20,7 +20,6 @@
 #' optimal number PC scores
 #'
 #' @examples
-#' library(geomorph)
 #' library(shapes)
 #' library(GraphGMM)
 #'
@@ -28,7 +27,7 @@
 #' data(apes)
 #'
 #' # Generalized Procrustes Fit
-#' GPAshape <- procGPA(apes$x)
+#' GPAshape <- GPA(apes$x)
 #'
 #' # calculate optimal number of PC scores
 #' data <- vector_from_landmarks(GPAshape$rotated)

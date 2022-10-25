@@ -34,7 +34,7 @@ library(GraphGMM)
 data(plethodon)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(plethodon$land)
+GPAshape <- GPA(plethodon$land)
 
 # procrustes distances
 
@@ -46,7 +46,7 @@ procD_comparisons(GPAshape$rotated, plethodon$species)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 # procrustes distances
 

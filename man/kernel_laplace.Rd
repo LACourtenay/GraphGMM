@@ -31,7 +31,6 @@ e.g. alpha > 100 or even alpha > 1000
 }
 
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -39,7 +38,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 data <- vector_from_landmarks(GPAshape$rotated)
 
 # perform non linear transformation

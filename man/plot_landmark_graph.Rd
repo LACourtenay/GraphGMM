@@ -35,7 +35,6 @@ The present function can be used to visualise the computed graphs on a given lan
 configuration.
 }
 \examples{
-library(geomorph)
 library(shapes)
 library(GraphGMM)
 
@@ -43,7 +42,7 @@ library(GraphGMM)
 data(apes)
 
 # Generalized Procrustes Fit
-GPAshape <- procGPA(apes$x)
+GPAshape <- GPA(apes$x)
 
 # calculate central configuration
 central_config <- calc_central_morph(GPAshape$rotated)
