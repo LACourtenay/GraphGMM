@@ -16,6 +16,8 @@
 #' @param label_colours A string vector of colours to be used in the plot.
 #' @param centre A boolean variable specifying whether data is to be centred first
 #' @param scale A boolean variable specifying whether data is to be scaled first
+#' @param scale_axes A boolean variable specifying whether the scale of plot axes
+#' present a 1:1 ratio (i.e. the same)
 #' @param point_size A numeric value defining the siz eof plot points
 #' @param CI_ellipse A boolean specifying whether Confidence Ellipses are to be
 #' included
@@ -68,6 +70,7 @@ kernel_pca <- function(data,
                        axes = c(1,2),
                        label_colours = NULL,
                        centre = TRUE, scale = FALSE,
+                       scale_axes = TRUE,
                        point_size = 2, CI_ellipse = FALSE,
                        CI_level = 0.95, CI_size = 1,
                        Chull = FALSE, Ch_size = 1,
@@ -96,6 +99,10 @@ kernel_pca <- function(data,
 
   if (!is.logical(scale)) {
     stop("The scale parameter only accepts boolean TRUE or FALSE values")
+  }
+
+  if (!is.logical(scale_axes)) {
+    stop("The scale_axes parameter only accepts boolean TRUE or FALSE values")
   }
 
   if (!is.numeric(point_size) | point_size < 0) {
@@ -182,6 +189,7 @@ kernel_pca <- function(data,
                               label_colours = label_colours,
                               centre = centre,
                               scale = scale,
+                              scale_axes = scale_axes,
                               point_size = point_size,
                               CI_ellipse = CI_ellipse,
                               CI_level = CI_level,

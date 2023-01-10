@@ -11,6 +11,7 @@ pca_plot(
   label_colours = NULL,
   centre = TRUE,
   scale = FALSE,
+  scale_axes = TRUE,
   point_size = 2,
   CI_ellipse = FALSE,
   CI_level = 0.95,
@@ -32,6 +33,9 @@ pca_plot(
 \item{centre}{A boolean variable specifying whether data is to be centred first}
 
 \item{scale}{A boolean variable specifying whether data is to be scaled first}
+
+\item{scale_axes}{A boolean variable specifying whether the scale of plot axes
+present a 1:1 ratio (i.e. the same)}
 
 \item{point_size}{A numeric value defining the siz eof plot points}
 
