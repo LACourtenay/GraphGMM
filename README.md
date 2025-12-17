@@ -26,7 +26,7 @@ Universidad de Salamanca [USAL]
 ---------------------------------------------------------------------------------------------------
 
 This code was designed and prepared for the study by:
-<b> Courtenay, L.A.; Aramendi, J.; González-Aguilera, D. (Submitted)
+<b> Courtenay, L.A.; Aramendi, J.; González-Aguilera, D. (2024)
 A Graph Based Geometric Morphometric approach to the analysis of primate radii: A new mathematical model for the ordination of landmark data. </b>
 
 TIDOP research group website: http://tidop.usal.es/
@@ -64,7 +64,7 @@ Comments, questions, doubts, suggestions and corrections can all be directed to 
 This project is licensed under the GNU Affero General Public License v3.0.
 See the LICENSE file for details.
 
-<b> Copyright (C) 2025 Lloyd Courtenay </b>
+<b> Copyright (C) 2022 Lloyd Courtenay </b>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
